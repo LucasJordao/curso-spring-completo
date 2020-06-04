@@ -38,6 +38,9 @@ public class Cliente implements Serializable{
 	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos = new ArrayList<>();
+	
 	//Constructors and Overloads
 	public Cliente() {
 		
@@ -96,7 +99,7 @@ public class Cliente implements Serializable{
 		return telefones;
 	}
 
-	public void setCidade(Set<String> telefones) {
+	public void setTelefones(Set<String> telefones) {
 		this.telefones= telefones;
 	}
 
@@ -108,6 +111,15 @@ public class Cliente implements Serializable{
 		this.enderecos = enderecos;
 	}
 
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+	
+	
 	//HashCode and Equals
 	@Override
 	public int hashCode() {
