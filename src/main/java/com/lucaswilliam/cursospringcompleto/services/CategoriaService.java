@@ -38,4 +38,14 @@ public class CategoriaService {
 				+ ", Tipo: " + Categoria.class.getName()));
 	}
 	
+	/**
+	 * Metodo responsavel por inserir uma categoria na base de dados
+	 * @param obj
+	 * @return - Objeto do tipo Categoria
+	 */
+	public Categoria insert(Categoria obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
+	
 }
