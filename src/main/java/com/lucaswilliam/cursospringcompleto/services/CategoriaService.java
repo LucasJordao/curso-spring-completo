@@ -23,9 +23,9 @@ public class CategoriaService {
 	 * @return - Lista do tipo Categoria
 	 */
 	public List<Categoria> findAll(){
-		List<Categoria> lista = repo.findAll();
+		List<Categoria> list = repo.findAll();
 		
-		return lista;
+		return list;
 	}
 	
 	/**

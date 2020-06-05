@@ -1,7 +1,9 @@
 package com.lucaswilliam.cursospringcompleto.resources;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.lucaswilliam.cursospringcompleto.domains.Categoria;
+import com.lucaswilliam.cursospringcompleto.dto.CategoriaDTO;
 import com.lucaswilliam.cursospringcompleto.services.CategoriaService;
 
 @RestController
@@ -27,10 +30,11 @@ public class CategoriaResource {
 	private CategoriaService service;
 	
 	@GetMapping()
-	public ResponseEntity<List<Categoria>> findAll() {
-		List<Categoria> lista = service.findAll();
+	public ResponseEntity<List<CategoriaDTO>> findAll() {
+		List<Categoria> list = service.findAll();
+		List<CategoriaDTO> listDTO = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
 		
-		return ResponseEntity.ok().body(lista);
+		return ResponseEntity.ok().body(listDTO);
 	}
 	
 	@GetMapping(value = "/{id}")
