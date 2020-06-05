@@ -48,4 +48,13 @@ public class CategoriaService {
 		return repo.save(obj);
 	}
 	
+	/**
+	 * Metodo responsavel por atualizar uma categoria na base de dados
+	 * @param obj
+	 * @return - Objeto do tipo Categoria
+	 */
+	public Categoria update(Categoria obj) {
+		findById(obj.getId());
+		return repo.save(obj);
+	}
 }
