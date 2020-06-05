@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.lucaswilliam.cursospringcompleto.domains.Categoria;
@@ -72,5 +75,18 @@ public class CategoriaService {
 		}catch(DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos");
 		}
+	}
+	
+	/**
+	 * Metodo responsavel por capturar paginas de categorias na base de dados
+	 * @param Page
+	 * @param linesPerPage
+	 * @param orderBy
+	 * @param direction
+	 * @return - Objeto do tipo Page<Categoria>
+	 */
+	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		return repo.findAll(pageRequest);
 	}
 }
