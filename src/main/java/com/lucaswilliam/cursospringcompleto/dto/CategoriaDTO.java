@@ -2,7 +2,11 @@ package com.lucaswilliam.cursospringcompleto.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import com.lucaswilliam.cursospringcompleto.domains.Categoria;
+
 
 public class CategoriaDTO implements Serializable {
 
@@ -10,6 +14,9 @@ public class CategoriaDTO implements Serializable {
 	
 	//Attributes
 	private Integer id;
+	
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@Size(min = 5, max =80, message = "O tamanho deve ser entre 5 e 80 caracteres")
 	private String nome;
 	
 	//Constructors and Overloads
