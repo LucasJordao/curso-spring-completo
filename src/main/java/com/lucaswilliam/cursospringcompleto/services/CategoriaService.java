@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.lucaswilliam.cursospringcompleto.domains.Categoria;
 import com.lucaswilliam.cursospringcompleto.repositories.CategoriaRepository;
+import com.lucaswilliam.cursospringcompleto.services.exceptions.DataIntegrityException;
 import com.lucaswilliam.cursospringcompleto.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -56,5 +58,19 @@ public class CategoriaService {
 	public Categoria update(Categoria obj) {
 		findById(obj.getId());
 		return repo.save(obj);
+	}
+	
+	/**
+	 * Metodo responsavel por deletar uma categoria na base de dados
+	 * @param id
+	 * @return - void
+	 */
+	public void delete(Integer id) {
+		findById(id);
+		try {
+			repo.deleteById(id);
+		}catch(DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos");
+		}
 	}
 }
