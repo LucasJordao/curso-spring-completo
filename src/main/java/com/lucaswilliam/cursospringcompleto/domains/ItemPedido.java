@@ -20,7 +20,7 @@ public class ItemPedido implements Serializable{
 	
 	private Double desconto;
 	private Integer quantidade;
-	private Double price;
+	private Double preco;
 	
 	//Constructors and Overloads
 	public ItemPedido() {
@@ -32,10 +32,14 @@ public class ItemPedido implements Serializable{
 		this.id.setProduto(produto);
 		this.desconto = desconto;
 		this.quantidade = quantidade;
-		this.price = price;
+		this.preco = price;
 	}
 
 	//Getters and Setters
+	public double getSubTotal() {
+		return (preco - desconto) * quantidade;
+	}
+	
 	public Produto getProduto() {
 		return this.id.getProduto();
 	}
@@ -69,11 +73,11 @@ public class ItemPedido implements Serializable{
 	}
 
 	public Double getPrice() {
-		return price;
+		return preco;
 	}
 
 	public void setPrice(Double price) {
-		this.price = price;
+		this.preco = price;
 	}
 
 	//HashCode and Equals
