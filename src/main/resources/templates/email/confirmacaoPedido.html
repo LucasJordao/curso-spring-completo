@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<htmlxmlns:th="http://www.thymeleaf.org">
+	<head>
+<titleth:remove="all">Order Confirmation</title>
+	<metahttp-equiv ="Content-Type"content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<div>
+			<h1>
+				Pedido número:
+				<spanth:text="${pedido.id}">
+					</span>
+			</h1>
+			<p>
+				Instante:
+				<spanth:text ="${#dates.format(pedido.instante, 'dd/MM/yyyyhh:mm')}">
+					</span>
+			</p>
+			<p>
+				Cliente:
+				<spanth:text="${pedido.cliente.nome}">
+					</span>
+			</p>
+			<p>
+				Situação do pagamento:
+				<spanth:text="${pedido.pagamento.estado.descricao}">
+					</span>
+			</p>
+			<h3>Detalhes do pedido:</h3>
+			<tableborder="1">
+			<tr>
+				<th>Produto</th>
+				<th>Quantidade</th>
+				<th>Preço unitário</th>
+				<th>Subtotal</th>
+			</tr>
+			<trth:each ="item: ${pedido.itens}">
+				<tdth:text="${item.produto.nome}">nome</td>
+					<tdth:text="${item.quantidade}">quantidade</td>
+						<tdth:text="${#numbers.formatDecimal(item.preco, 0, 'POINT', 2, 'COMMA')}">preco</td>
+							<tdth:text="${#numbers.formatDecimal(item.subTotal, 0, 'POINT', 2, 'COMMA')}">subTotal</td>
+								</tr>
+								</table>
+								<p>
+									Valor total:
+									<spanth:text="${#numbers.formatDecimal(pedido.valorTotal, 0, 'POINT', 2, 'COMMA')}">
+										</span>
+								</p>
+		</div>
+	</body>
+	</html>
