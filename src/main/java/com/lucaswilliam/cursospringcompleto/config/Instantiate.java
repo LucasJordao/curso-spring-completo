@@ -6,6 +6,7 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import com.lucaswilliam.cursospringcompleto.domains.Categoria;
 import com.lucaswilliam.cursospringcompleto.domains.Cidade;
@@ -31,6 +32,7 @@ import com.lucaswilliam.cursospringcompleto.repositories.PedidoRepository;
 import com.lucaswilliam.cursospringcompleto.repositories.ProdutoRepository;
 
 @Configuration
+@Profile("test")
 public class Instantiate implements CommandLineRunner {
 	//Repositories
 	@Autowired

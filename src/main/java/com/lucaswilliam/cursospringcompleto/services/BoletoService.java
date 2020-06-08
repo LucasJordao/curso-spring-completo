@@ -1,4 +1,4 @@
-package com.lucaswilliam.cursospringcompleto.resources;
+package com.lucaswilliam.cursospringcompleto.services;
 
 import java.util.Calendar;
 import java.util.Date;

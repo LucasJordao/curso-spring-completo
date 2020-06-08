@@ -14,8 +14,6 @@ import com.lucaswilliam.cursospringcompleto.domains.enums.EstadoPagamento;
 import com.lucaswilliam.cursospringcompleto.repositories.ItemPedidoRepository;
 import com.lucaswilliam.cursospringcompleto.repositories.PagamentoRepository;
 import com.lucaswilliam.cursospringcompleto.repositories.PedidoRepository;
-import com.lucaswilliam.cursospringcompleto.repositories.ProdutoRepository;
-import com.lucaswilliam.cursospringcompleto.resources.BoletoService;
 import com.lucaswilliam.cursospringcompleto.services.exceptions.ObjectNotFoundException;
 
 @Service
